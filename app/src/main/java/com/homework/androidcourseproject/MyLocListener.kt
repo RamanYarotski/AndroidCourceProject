@@ -7,6 +7,10 @@ import android.os.Bundle
 class MyLocListener() : LocationListener {
     private lateinit var locListenerInterface: LocListenerInterface
 
+    fun setLocListenerInterface ( locListenerInterface: LocListenerInterface){
+        this.locListenerInterface = locListenerInterface
+    }
+
     override fun onLocationChanged(location: Location) {
         locListenerInterface.OnLocationChanged(location)
     }

@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AndroidCourseProject</string>
+    <string name="app_name">Gps point</string>
+    <string name="distance">distance</string>
+    <string name="speed">speed</string>
 </resources>
