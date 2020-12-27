@@ -2,4 +2,8 @@
     <string name="app_name">Gps point</string>
     <string name="distance">distance</string>
     <string name="speed">speed</string>
+    <string name="dialog_title">Расстояние</string>
+    <string name="dialog_button">Готово</string>
+    <string name="passed_distance">passed_distance</string>
+    <string name="rest_distance">rest_distance</string>
 </resources>
