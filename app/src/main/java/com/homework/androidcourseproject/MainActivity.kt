@@ -3,22 +3,18 @@ package com.homework.androidcourseproject
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
-import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 
 class MainActivity : AppCompatActivity(), LocListenerInterface {
     private lateinit var locationManager: LocationManager
-    private lateinit var distanceTextView: TextView
+    private var tvDistance: TextView? = null
     private var lastLocation: Location? = null
     private lateinit var myLocListener:MyLocListener
-    private var distance: Float = 0f
-    private lateinit var speedTextView: TextView
-    private var speed: Float = 0F
+    private var distance: Int = 0
+    private var tvSpeed: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +23,8 @@ class MainActivity : AppCompatActivity(), LocListenerInterface {
     }
 
     private fun init() {
-        distanceTextView = findViewById(R.id.distanceTextView)
-        speedTextView = findViewById(R.id.speedTextView)
+        tvDistance = findViewById(R.id.distanceTextView)
+        tvSpeed = findViewById(R.id.speedTextView)
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         myLocListener = MyLocListener()
         myLocListener.setLocListenerInterface(this)
@@ -65,10 +61,10 @@ class MainActivity : AppCompatActivity(), LocListenerInterface {
 
     override fun OnLocationChanged(location: Location) {
     if (location.hasSpeed()){
-        distance += lastLocation?.distanceTo(location) ?: 0f
+        distance += lastLocation?.distanceTo(location)?.toInt() ?: 0
     }
         lastLocation = location
-        distanceTextView.text = distance.toString()
-        speedTextView.text =location.speed.toString()
+        tvDistance?.text = distance.toString()
+        tvSpeed?.text =location.speed.toString()
     }
 }
