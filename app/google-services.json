@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "913431565860",
+    "project_id": "gps-point-80ac0",
+    "storage_bucket": "gps-point-80ac0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913431565860:android:db90f080b429757fa5aab1",
+        "android_client_info": {
+          "package_name": "com.homework.androidcourseproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913431565860-pdebiao50brgklghc76rf529froqq5fh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGqds-hu-1h49WVfqsISoR8EGeDe8CYjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913431565860-pdebiao50brgklghc76rf529froqq5fh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
