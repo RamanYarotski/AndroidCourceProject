@@ -4,4 +4,8 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="ThemeOverlay.SignIn" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
+        <item name="colorPrimary">@color/blue</item>
+    </style>
 </resources>

@@ -6,4 +6,10 @@
     <string name="dialog_button">Готово</string>
     <string name="passed_distance">passed_distance</string>
     <string name="rest_distance">rest_distance</string>
+    <string name="sign_in">Sign in</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="remember">Remember</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="just_sign_in">* Just sign in</string>
 </resources>
