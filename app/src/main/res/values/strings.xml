@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gps point</string>
+    <string name="app_name">GPS point</string>
     <string name="distance">distance</string>
     <string name="speed">speed</string>
     <string name="dialog_title">Расстояние</string>
