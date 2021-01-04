@@ -12,4 +12,5 @@
     <string name="remember">Remember</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="just_sign_in">* Just sign in</string>
+    <string name="registration">Registration</string>
 </resources>

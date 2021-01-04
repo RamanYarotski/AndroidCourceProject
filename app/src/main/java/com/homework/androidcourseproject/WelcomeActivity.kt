@@ -10,10 +10,16 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_welcome)
 
         val thread = Thread(Runnable {
-            Thread.sleep(4000)
-            val welcomeIntent = Intent(this, MainActivity::class.java)
+            Thread.sleep(1000)
+            val welcomeIntent = Intent(this, SignInActivity::class.java)
             startActivity(welcomeIntent)
+            finish()
         })
         thread.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
 }
