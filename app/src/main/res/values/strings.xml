@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">GPS point</string>
     <string name="distance">distance</string>
+    <string name="name_voice_point">*Enter voice point name</string>
+    <string name="voice_point_text">*Enter notification text</string>
+    <string name="voice_point_note">*input is required</string>
+    <string name="voice_point_number_of_notifications"> Number of notifications per day(1)</string>
+    <string name="voice_point_number">Enter text</string>
     <string name="speed">speed</string>
-    <string name="dialog_title">Расстояние</string>
-    <string name="dialog_button">Готово</string>
-    <string name="passed_distance">passed_distance</string>
-    <string name="rest_distance">rest_distance</string>
+    <string name="dialog_title">Enter distance</string>
+    <string name="dialog_delete_marker">Delete marker?</string>
+    <string name="dialog_title_voice">Enter voice point</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">CANCEL</string>
+    <string name="passed_distance">passed</string>
+    <string name="rest_distance">rest</string>
     <string name="sign_in">Sign in</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -13,4 +21,10 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="just_sign_in">* Just sign in</string>
     <string name="registration">Registration</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="M">m</string>
+    <string name="kmH">km/h</string>
+    <string name="exit">exit</string>
+    <string name="tts_error">tts_error</string>
+
 </resources>

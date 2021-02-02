@@ -8,7 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#0181D6</color>
+    <color name="line_color">#12FF00</color>
     <color name="grey">#A5A5A5</color>
     <color name="red">#DD2C00</color>
     <color name="green">#64DD17</color>
+    <color name="ic_point_background">#FFFFFF</color>
 </resources>

@@ -1,11 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        map:mapType="normal"
+        map:uiZoomControls="true"
+        map:cameraTilt="30"
+
+        map:uiCompass="true"
+        tools:context=".MapsActivity" />
+
+    <ImageButton
+        android:id="@+id/exitButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginVertical="40dp"
+        android:alpha="0.85"
+        android:background="@drawable/ic_outline_power_settings_new_48"
+        app:layout_constraintBottom_toTopOf="@id/trafficButton"
+        app:layout_constraintEnd_toEndOf="@id/walkingButton"
+        app:layout_constraintStart_toStartOf="@id/walkingButton" />
+
+    <ImageButton
+        android:id="@+id/trafficButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:alpha="0.85"
+        android:background="@drawable/ic_twotone_traffic_24"
+        app:layout_constraintBottom_toTopOf="@+id/walkingButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/walkingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:alpha="0.85"
+        android:background="@drawable/ic_twotone_directions_walk_48"
+        app:layout_constraintBottom_toTopOf="@+id/listButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/listButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:alpha="0.85"
+        android:background="@drawable/ic_twotone_format_list_bulleted_24"
+        app:layout_constraintBottom_toTopOf="@+id/voicePositionButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/voicePositionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:alpha="0.85"
+        android:background="@drawable/ic_twotone_edit_location_alt_48"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/setAndFindPositionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:alpha="0.85"
+        android:background="@drawable/ic_twotone_add_location_48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voicePositionButton" />
+
+    <ImageButton
+        android:id="@+id/cleanButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:alpha="0.85"
+        android:background="@drawable/ic_baseline_clear_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setAndFindPositionButton" />
 
 
     <TextView
@@ -13,25 +102,66 @@
         style="@style/text_view_info_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/rest_distance"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/progressBar"
+        app:layout_constraintEnd_toStartOf="@id/passed_distanceTV"
         app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/passed_distanceTV" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/M"
+        style="@style/text_view_info_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:hint="@string/M"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/rest_distanceTV"
+        app:layout_constraintStart_toEndOf="@+id/rest_distanceTV" />
+
+    <TextView
+        android:id="@+id/passed_distanceTV"
+        style="@style/text_view_info_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/rest_distanceTV"
+        app:layout_constraintEnd_toStartOf="@+id/speedTV"
+        app:layout_constraintStart_toEndOf="@+id/rest_distanceTV"
+        app:layout_constraintTop_toTopOf="@+id/rest_distanceTV" />
+
+    <TextView
+        android:id="@+id/M2"
+        style="@style/text_view_info_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:hint="@string/M"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/passed_distanceTV"
+        app:layout_constraintStart_toEndOf="@+id/passed_distanceTV" />
 
     <TextView
         android:id="@+id/speedTV"
         style="@style/text_view_info_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/speed"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/passed_distanceTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/passed_distanceTV"
         app:layout_constraintTop_toTopOf="@+id/passed_distanceTV"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/kmH"
+        style="@style/text_view_info_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:hint="@string/kmH"
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/speedTV"
+        app:layout_constraintStart_toEndOf="@+id/speedTV" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -40,21 +170,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:id="@+id/passed_distanceTV"
-        style="@style/text_view_info_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/passed_distance"
-        app:layout_constraintBottom_toBottomOf="@+id/rest_distanceTV"
-        app:layout_constraintEnd_toStartOf="@+id/speedTV"
-        app:layout_constraintStart_toEndOf="@+id/rest_distanceTV"
-        app:layout_constraintTop_toTopOf="@+id/rest_distanceTV" />
-
-
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

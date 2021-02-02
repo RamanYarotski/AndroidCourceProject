@@ -12,7 +12,7 @@ class MyLocListener() : LocationListener {
     }
 
     override fun onLocationChanged(location: Location) {
-        locListenerInterface.OnLocationChanged(location)
+        locListenerInterface.onLocationChanged(location)
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
