@@ -123,6 +123,8 @@ class MainActivity : AppCompatActivity(), LocListenerInterface,
     private lateinit var tts: TextToSpeech
     private var ttsEnabled: Boolean = false
     var updateCounters: String = "update counters"
+    private var voiceMarkersReady: Boolean = false
+    private lateinit var lastVoiceMarker: Marker
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -196,6 +198,7 @@ class MainActivity : AppCompatActivity(), LocListenerInterface,
                         voicePointTexts[voicePointTexts.size - 1],
                         lastLocation
                     )
+                    voiceMarkersReady = false
                     if (!isQuest) {
                         writeVariablePointToDB(lastLocation!!, voicePointsRef)
 //                Передача текста в firebase
@@ -246,11 +249,13 @@ class MainActivity : AppCompatActivity(), LocListenerInterface,
         if (!voiceMarkersLocation.size.equals(null) && ::latLng.isInitialized) {
             for (i in 0 until voiceMarkersLocation.size) {
                 if (lastLocation?.distanceTo(voiceMarkersLocation[i])?.toInt()!! <= 10) {
-                    if (numberNotificationsPerDay[i] > 0) {
+                    if (voiceMarkersReady && numberNotificationsPerDay[i] > 0
+                        && voiceMarkers[i] != lastVoiceMarker) {
                         numberNotificationsPerDay[i] = numberNotificationsPerDay[i] - 1
 //                        Notification.Builder(this.getApplicationContext())
 //                            .setSound(speak(voicePointTexts[i]))
                         speak(voicePointTexts[i])
+                        lastVoiceMarker = voiceMarkers[i]
                     }
                 }
             }
@@ -264,7 +269,7 @@ class MainActivity : AppCompatActivity(), LocListenerInterface,
     }
 
     fun updateCounterNotification() {
-        Collections.replaceAll(numberNotificationsPerDay, 0, 1)
+        Collections.replaceAll(numberNotificationsPerDay, 0, 2)
     }
 
     private fun playVoicePointNotification(voicePointNumber: Int) {
@@ -391,6 +396,12 @@ class MainActivity : AppCompatActivity(), LocListenerInterface,
                 BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
             )
         voiceMarkers.add(map.addMarker(voiceMarkerOption))
+        if (!::lastVoiceMarker.isInitialized) {
+            val firstVoiceMarkerOption =
+                MarkerOptions().position(MINSK).alpha(0.0F).draggable(true).icon(
+                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+            lastVoiceMarker = map.addMarker(firstVoiceMarkerOption)
+        }
         voiceMarkersLocation.add(location!!)
     }
 
@@ -440,7 +451,7 @@ class MainActivity : AppCompatActivity(), LocListenerInterface,
     private fun writeVoicePointInfo(name: String, text: String) {
         voicePointNames.add(name)
         voicePointTexts.add(text)
-        numberNotificationsPerDay.add(1)
+        numberNotificationsPerDay.add(2)
     }
 
     private fun showDialog() {
@@ -749,6 +760,7 @@ class MainActivity : AppCompatActivity(), LocListenerInterface,
             voiceMarkersLocation[numberDragMarker!!] = loc
             isVoiceMarker = false
             numberDragMarker = null
+            voiceMarkersReady = true
         }
     }
 
